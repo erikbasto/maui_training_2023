@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MauiTraining.Models.Backend.Building"
+             xmlns:vm="clr-namespace:MauiTraining.ViewModel"
+             x:DataType="vm:BuildingDetailViewModel"
+             x:Class="MauiTraining.Views.BuildingDetailPage"
+             Shell.NavBarIsVisible="False"
+             Title="Property details">
+    <Grid RowDefinitions="20,Auto,Auto,*,Auto" >
+        <Image
+            VerticalOptions="Start"
+            Aspect="Fill"
+            HeightRequest="280"
+            Grid.RowSpan="3"
+            Source="{Binding Building.ImageUrl}" />
+
+        <StackLayout
+            Grid.Row="1"
+            Margin="20,0,20,0"
+            Orientation="Horizontal">
+
+            <ImageButton
+                Source="back_icon"
+                CornerRadius="10"
+                BackgroundColor="White"
+                HeightRequest="40"
+                WidthRequest="40"
+                Padding="5"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"
+                Command="{Binding GetBackEventCommand}"/>
+
+            <ImageButton
+                Source="{Binding ImageSource}"
+                CornerRadius="10"
+                BackgroundColor="White"
+                HeightRequest="40"
+                WidthRequest="40"
+                Padding="5"
+                VerticalOptions="Start"
+                HorizontalOptions="EndAndExpand"
+                Command="{Binding SaveBookmarkCommand}"/>
+        </StackLayout>
+
+        <VerticalStackLayout
+            Grid.Row="3"
+            Margin="20">
+
+            <Label
+                Text="{Binding Building.Price, StringFormat='{0:C2}'}"
+                FontSize="Subtitle" />
+
+            <HorizontalStackLayout>
+                <Image HeightRequest="20" Source="location_icon" />
+                <Label Text="{Binding Building.Address}" FontSize="Medium" />
+            </HorizontalStackLayout>
+
+            <Label Text="Description" Margin="0,20,0,20" FontSize="Title" />
+            <Label Text="{Binding Building.Description}" FontSize="Medium" />
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout
+            Grid.Row="4"
+            VerticalOptions="EndAndExpand"
+            HorizontalOptions="Center"
+            Spacing="30">
+
+            <Frame
+                HeightRequest="70"
+                WidthRequest="150"
+                CornerRadius="35"
+                BackgroundColor="{StaticResource Primary}">
+                <HorizontalStackLayout Spacing="10">
+                    <Image
+                        HeightRequest="25"
+                        WidthRequest="25"
+                        VerticalOptions="Center"
+                        Source="message_icon" />
+                    <Label
+                        Text="SMS"
+                        FontSize="Medium"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TextMessageOwnerCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+             <Frame
+                HeightRequest="70"
+                WidthRequest="150"
+                CornerRadius="35"
+                BackgroundColor="{StaticResource Primary}">
+                <HorizontalStackLayout Spacing="20">
+                    <Image
+                        HeightRequest="25"
+                        WidthRequest="25"
+                        VerticalOptions="Center"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="phone_icon" />
+                    <Label
+                        Text="Call"
+                        FontSize="Medium"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        HorizontalOptions="StartAndExpand" />
+                </HorizontalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CallOwnerCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:handlers="clr-namespace:MauiTraining.Handlers"
+             x:Class="MauiTraining.Views.ProductsPage"
+             Title="Products">
+    <Shell.SearchHandler>
+        <handlers:ProductSearchHandler
+            Placeholder="Search product"
+            DisplayMemberName="Name"
+            ShowsResults="True"
+            ItemTemplate="{StaticResource ProductDataTemplate}">
+        </handlers:ProductSearchHandler>
+    </Shell.SearchHandler>
+
+    <RefreshView
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}">
+
+        <CollectionView
+        SelectionMode="Single"
+        ItemsSource="{Binding Products}"
+        SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+        ItemTemplate="{StaticResource ProductDataTemplate}"/>
+
+    </RefreshView>
+</ContentPage>
