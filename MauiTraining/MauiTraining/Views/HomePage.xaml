@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model ="clr-namespace:MauiTraining.Models.Backend.Building"
+             xmlns:vm ="clr-namespace:MauiTraining.ViewModel"
+             x:DataType="vm:HomeViewModel"
+             x:Class="MauiTraining.Views.HomePage"
+             Title="Properties Sale">
+
+    <ScrollView>
+        <Grid
+            Margin="20"
+            RowSpacing="20"
+            RowDefinitions="Auto,Auto,Auto,Auto">
+
+            <VerticalStackLayout
+                Grid.Row="0"
+                Spacing="5">
+                <Label Text="{Binding UserName}" FontSize="Large"/>
+                <Label Text="Find your new Home!" FontSize="Medium"/>
+            </VerticalStackLayout>
+
+            <Frame
+                Grid.Row="1"
+                Padding="5">
+                <HorizontalStackLayout Spacing="20">
+                    <Image Source="search_icon" Aspect="AspectFit" HeightRequest="25" WidthRequest="25" />
+                    <Label Text="Search" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SearchBuildingsCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <VerticalStackLayout Grid.Row="2" Spacing="20">
+                <Label Text="Categories"
+                       FontSize="Large"/>
+
+                <CollectionView
+                    SelectionMode="Single"
+                    HeightRequest="50"
+                    ItemsSource="{Binding Categories}"
+                    SelectedItem="{Binding SelectedCategory}"
+                    SelectionChangedCommand="{Binding CategoryEventSelectedCommand}"
+                    BackgroundColor="White">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="25" Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:CategoryResponse">
+                            <Border Padding="16,8"
+                                    HorizontalOptions="Center"
+                                    >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10,10,10,10"/>
+                                </Border.StrokeShape>
+
+                                <HorizontalStackLayout Spacing="5" HeightRequest="25">
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="25"
+                                        WidthRequest="25"
+                                        Source="{Binding ImageUrl}" />
+
+                                    <Label
+                                        VerticalOptions="Center"
+                                        FontSize="Medium"
+                                        Text="{Binding Name}" />
+                                </HorizontalStackLayout>
+                            </Border>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout
+                Grid.Row="3"
+                Spacing="20">
+                <Label Text="My favourites" FontSize="Large" />
+                <CollectionView
+                    HeightRequest="350"
+                    SelectionMode="Single"
+                    ItemsSource="{Binding FavoriteBuildings}">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="20" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:BuildingResponse">
+                            <Frame
+                                CornerRadius="25"
+                                Padding="15"
+                                BackgroundColor="GhostWhite">
+                                <Grid RowSpacing="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Frame
+                                        HeightRequest="200"
+                                        WidthRequest="250"
+                                        CornerRadius="25"
+                                        Padding="0"
+                                        IsClippedToBounds="True">
+                                        <Image
+                                            Aspect="Fill"
+                                            Source="{Binding ImageUrl}" />
+                                    </Frame>
+                                    <Label Grid.Row="1" Text="{Binding Name}" FontSize="Subtitle" />
+                                    <Label Grid.Row="2" Text="{Binding Description}" FontSize="Small"  WidthRequest="250" LineBreakMode="TailTruncation"/>
+                                    <Label Grid.Row="3" Text="{Binding Price, StringFormat='{0:C2}'}" FontSize="Subtitle" TextColor="{StaticResource Analogous}" />
+
+                                </Grid>
+
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Grid>
+
+    </ScrollView>
+</ContentPage>

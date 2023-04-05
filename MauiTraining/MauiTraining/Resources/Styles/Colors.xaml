@@ -6,9 +6,14 @@
 
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>
+    <Color x:Key="Danger">#C62828</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
+    <Color x:Key="Complementary500Brush">#AFD42B</Color>
+    <Color x:Key="Complementary900Brush">#6E7000</Color>
+    <Color x:Key="Complementary700Brush">#96AD1B</Color>
+    <Color x:Key="Analogous">#2b5bd4</Color>
     <Color x:Key="Gray100">#E1E1E1</Color>
     <Color x:Key="Gray200">#C8C8C8</Color>
     <Color x:Key="Gray300">#ACACAC</Color>

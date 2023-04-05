@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios16.2</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
@@ -79,7 +79,6 @@
 	  <None Remove="Resources\Images\bookmark_icon.svg" />
 	  <None Remove="Resources\Images\faq_icon.svg" />
 	  <None Remove="Resources\Images\home_icon.svg" />
-	  <None Remove="Resources\Images\house02.jpg" />
 	  <None Remove="Resources\Images\left_arrow_icon.svg" />
 	  <None Remove="Resources\Images\location_icon.svg" />
 	  <None Remove="Resources\Images\logout_icon.svg" />
@@ -90,6 +89,9 @@
 	  <None Remove="Resources\Images\settings_icon.svg" />
 	  <None Remove="appsettings.json" />
 	  <None Remove="Services\" />
+	  <None Remove="Views\" />
+	  <None Remove="ViewModel\" />
+	  <None Remove="Handlers\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Converters\" />
@@ -100,24 +102,11 @@
 	  <Folder Include="Models\Backend\Login\" />
 	  <Folder Include="Models\Backend\Building\" />
 	  <Folder Include="Services\" />
+	  <Folder Include="Views\" />
+	  <Folder Include="ViewModel\" />
+	  <Folder Include="Handlers\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Compile Include="Resources\Images\about_icon.svg" />
-	  <Compile Include="Resources\Images\back_icon.svg" />
-	  <Compile Include="Resources\Images\bookmark_empty_icon.svg" />
-	  <Compile Include="Resources\Images\bookmark_fill_icon.svg" />
-	  <Compile Include="Resources\Images\bookmark_icon.svg" />
-	  <Compile Include="Resources\Images\faq_icon.svg" />
-	  <Compile Include="Resources\Images\home_icon.svg" />
-	  <Compile Include="Resources\Images\house02.jpg" />
-	  <Compile Include="Resources\Images\left_arrow_icon.svg" />
-	  <Compile Include="Resources\Images\location_icon.svg" />
-	  <Compile Include="Resources\Images\logout_icon.svg" />
-	  <Compile Include="Resources\Images\message_icon.svg" />
-	  <Compile Include="Resources\Images\phone_icon.svg" />
-	  <Compile Include="Resources\Images\privacy_icon.svg" />
-	  <Compile Include="Resources\Images\search_icon.svg" />
-	  <Compile Include="Resources\Images\settings_icon.svg" />
-	  <Compile Include="appsettings.json" />
+	  <EmbeddedResource Include="appsettings.json" />
 	</ItemGroup>
 </Project>

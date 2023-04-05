@@ -2,9 +2,37 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiTraining"
+             xmlns:data="clr-namespace:MauiTraining.DataAccess"
+             xmlns:converters="clr-namespace:MauiTraining.Converters"
              x:Class="MauiTraining.App">
     <Application.Resources>
         <ResourceDictionary>
+            <converters:PriceColorConverter x:Key="PriceColorConverter" />
+            <DataTemplate x:Key="ProductDataTemplate" x:DataType="data:Product" >
+                <Grid ColumnDefinitions="*,Auto" Padding="4" HeightRequest="80">
+                    <VerticalStackLayout VerticalOptions="Center">
+                        <Label Text="{Binding Name}" FontAttributes="Bold" />
+                        <Label Text="{Binding Description}"  />
+                    </VerticalStackLayout>
+                    <Label Grid.Column="1"
+                           VerticalOptions="Center"
+                           FontAttributes="Bold"
+                           FontAutoScalingEnabled="True"
+                           Text="{Binding Price, StringFormat='{0:C2}'}"
+                           TextColor="{Binding Price, Converter={StaticResource PriceColorConverter}}"
+                           />
+                </Grid>
+            </DataTemplate>
+
+            <Style x:Key="ProductGrid" TargetType="Grid">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{AppThemeBinding Light='Gray', Dark='DarkBlue'}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Padding" Value="20" />
+            </Style>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />

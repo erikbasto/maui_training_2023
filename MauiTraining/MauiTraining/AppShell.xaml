@@ -4,12 +4,92 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiTraining"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:views="clr-namespace:MauiTraining.Views"
+    xmlns:info="clr-namespace:Microsoft.Maui.ApplicationModel;assembly=Microsoft.Maui.Essentials"
+    Shell.FlyoutBehavior="Flyout">
+
+    <Shell.FlyoutHeader>
+        <Image Source="dotnet_bot.svg"  WidthRequest="120" Margin="10" />
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout>
+            <Label Text="{x:Static info:AppInfo.Name}" />
+            <Label Text="{x:Static info:AppInfo.VersionString}" />
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="About"
+        ContentTemplate="{DataTemplate views:AboutPage}"
+        Route="AboutPage" />
+
+      <ShellContent
+        Title="Sales dashboard"
+        ContentTemplate="{DataTemplate views:DashboardPage}"
+        Route="DashboardPage" />
+
+    <FlyoutItem Title="Property Sales">
+        <Tab Title="Resumen" Icon="home_icon">
+            <ShellContent
+                Title="Resumen"
+                ContentTemplate="{DataTemplate  views:HomePage}"
+                Route="HomePage"/>
+        </Tab>
+
+         <Tab Title="Bookmarks" Icon="bookmark_icon">
+            <ShellContent
+                Title="Bookmarks"
+                ContentTemplate="{DataTemplate  views:BookmarkPage}"
+                Route="BookmarkPage"/>
+        </Tab>
+
+         <Tab Title="Settings" Icon="settings_icon">
+            <ShellContent
+                Title="Settings"
+                ContentTemplate="{DataTemplate  views:SettingsPage}"
+                Route="SettingsPage"/>
+        </Tab>
+
+    </FlyoutItem>
+
+
+    <FlyoutItem Title="Shop Settings">
+        <Tab Title="Summary">
+            <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate views:MainPage}"
+                Route="MainPage" />
+        </Tab>
+        <Tab Title="Products">
+            <ShellContent
+                Title="Products"
+                ContentTemplate="{DataTemplate views:ProductsPage}"
+                Route="ProductsPage" />
+        </Tab>
+        <Tab Title="Categories">
+            <ShellContent
+                Title="Categories"
+                ContentTemplate="{DataTemplate views:CategoriesPage}"
+                Route="CategoriesPage" />
+        </Tab>
+        <Tab Title="Clients">
+            <ShellContent
+                Title="Clients"
+                ContentTemplate="{DataTemplate views:ClientsPage}"
+                Route="ClientsPage" />
+        </Tab>        
+    </FlyoutItem>
+
+    <ShellContent Title="Store"
+                  ContentTemplate="{DataTemplate views:HelpSupportPage}"
+                  Route="HelpSupportPage"/>
+
+    <MenuItem
+        Text="Open Google"
+        Clicked="MenuItem_Clicked" />
+
+    
 
 </Shell>
 

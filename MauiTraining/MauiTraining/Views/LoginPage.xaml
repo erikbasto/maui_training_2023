@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiTraining.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             Title="Login">
+    <VerticalStackLayout
+        VerticalOptions="Center"
+        Margin="20,0,20,0"
+        Spacing="20">
+
+        <Image
+            Source="dotnet_bot"
+            HorizontalOptions="Center"
+            HeightRequest="80"
+            WidthRequest="80"
+            />
+
+        <Label 
+            Text="Welcome to .NET MAUI Training App!"
+            TextColor="{StaticResource Quaternary}"
+            FontSize="Large"
+            HorizontalOptions="Center" />
+
+        <Label
+            Text="Provide the information to login"
+            TextColor="LightGray"
+            FontSize="Small"
+            HorizontalOptions="Center"/>
+
+        <Entry
+            Text="{Binding Email}"
+            Placeholder="Email" />
+
+        <Entry
+            Text="{Binding Password}"
+            Placeholder="Password"
+            IsPassword="True"/>
+
+        <Button
+            Text="Login"
+            HeightRequest="50"
+            FontSize="Medium"
+            BackgroundColor="{StaticResource Primary}"
+            Command="{Binding LoginMethodCommand}"
+            />
+
+    </VerticalStackLayout>
+</ContentPage>

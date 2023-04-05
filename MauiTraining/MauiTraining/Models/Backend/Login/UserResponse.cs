@@ -27,7 +27,7 @@ namespace MauiTraining.Models.Backend.Login
         /// Last name.
         /// </summary>
         [JsonProperty("apellido")]
-        public string Apellido { get; set; }
+        public string Lastname { get; set; }
 
         /// <summary>
         /// Username.

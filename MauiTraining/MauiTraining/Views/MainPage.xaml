@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiTraining.Views.MainPage"
+             Title="Shop Summary">
+    <Grid 
+        ColumnDefinitions="Auto,Auto" 
+        RowDefinitions="Auto, Auto, Auto"
+        VerticalOptions="Center"
+        HorizontalOptions="Center">
+
+        <Ellipse
+            WidthRequest="50"
+            HeightRequest="50"
+            Margin="4"
+            Fill="{StaticResource Complementary500Brush}"/>
+        <Label 
+            x:Name="category"  
+            VerticalTextAlignment="Center" 
+            HorizontalTextAlignment="Center" 
+            FontSize="30" />
+        <Label 
+            Text="Categories"
+            VerticalTextAlignment="Center" 
+            FontSize="30"
+            Grid.Column="1"/>
+
+        <Ellipse 
+            WidthRequest="50" 
+            HeightRequest="50" 
+            Margin="4" 
+            Fill="{StaticResource Complementary900Brush}" 
+            Grid.Row="1"/>
+        <Label 
+            x:Name="product"  
+            VerticalTextAlignment="Center" 
+            HorizontalTextAlignment="Center" 
+            FontSize="30"
+            Grid.Row="1"/>
+        <Label 
+            Text="Products"
+            VerticalTextAlignment="Center" 
+            FontSize="30"
+            Grid.Column="1"
+            Grid.Row="1"/>
+
+        <Ellipse 
+            WidthRequest="50" 
+            HeightRequest="50" 
+            Margin="4" 
+            Fill="{StaticResource Complementary700Brush}" 
+            Grid.Row="2"/>
+        <Label 
+            x:Name="client"  
+            VerticalTextAlignment="Center" 
+            HorizontalTextAlignment="Center" 
+            FontSize="30"
+            Grid.Row="2"/>
+        <Label 
+            Text="Clients"
+            VerticalTextAlignment="Center" 
+            FontSize="30"
+            Grid.Column="1"
+            Grid.Row="2"/>
+    </Grid>
+</ContentPage>
